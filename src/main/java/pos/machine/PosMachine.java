@@ -13,7 +13,7 @@ public class PosMachine {
 
         Receipt receipt = calculateReceipt(items);
 
-        return "";//generateReceipt(receipt);
+        return generateReceipt(receipt);
     }
 
     private List<Item> convertToItems(List<String> barcodes) {
@@ -72,5 +72,13 @@ public class PosMachine {
             grandTotal += itemValue.getSubtotal();
         }
         return grandTotal;
+    }
+
+    private String generateReceipt(Receipt receipt) {
+        String itemsDetail = generateItemsDetail(receipt);
+        String receiptValue = "";
+        return ("***<store earning no money>Receipt***\n" + itemsDetail + "----------------------\n" +
+                "Total: " + receipt.getTotalPrice() + " (yuan)\n" +
+                "**********************");
     }
 }
