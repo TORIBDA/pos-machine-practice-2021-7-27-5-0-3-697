@@ -52,7 +52,7 @@ public class PosMachine {
                 " Quantity: " + itemVal.getQuantity() +
                 " Subtotal: " + itemVal.getSubtotal());
         }*/
-        //receipt.setTotalPrice(calculateTotalPrice(itemsList));
+        receipt.setTotalPrice(calculateTotalPrice(itemsList));
         //System.out.println("Total Price: " + receipt.getTotalPrice());
         return receipt;
     }
@@ -63,5 +63,14 @@ public class PosMachine {
             itemValue.setSubtotal(itemValue.getQuantity()*itemValue.getUnitPrice());
         }
         return itemsList;
+    }
+
+    private int calculateTotalPrice(List<Item> itemsList) {
+        int grandTotal = 0;
+        for(Item itemValue : itemsList)
+        {
+            grandTotal += itemValue.getSubtotal();
+        }
+        return grandTotal;
     }
 }
