@@ -11,17 +11,15 @@ public class PosMachine {
                     " Quantity: " + itemVal.getQuantity());
         }*/
 
-        return "";
+        Receipt receipt = calculateReceipt(items);
+
+        return "";//generateReceipt(receipt);
     }
 
     private List<Item> convertToItems(List<String> barcodes) {
         LinkedList<Item> items = new LinkedList<Item>();
         List<ItemInfo> itemInfo = loadAllItemsInfo();
         barcodes = new ArrayList<>(new LinkedHashSet<>(barcodes));
-        //load items here
-        //Check per barcode in barcodes
-        //push the items on the list of items retrieved based on barcode
-        //return items
         for (String barcode : barcodes) {
             Item itemValue = new Item();
             for (ItemInfo itemInfoVal : itemInfo) {
@@ -42,5 +40,20 @@ public class PosMachine {
 
     private int retrieveItemCount(String currentItemBarcode) {
         return Collections.frequency(ItemDataLoader.loadBarcodes(), currentItemBarcode);
+    }
+
+    private Receipt calculateReceipt(List<Item> itemsList) {
+        Receipt receipt = new Receipt();
+        //receipt.setItems(calculateItemsSubtotal(itemsList));
+        /*for (Item itemVal : receipt.getItems())
+        {
+            System.out.println("Name: "+ itemVal.getName() +
+                " Unit Price: " + itemVal.getUnitPrice() +
+                " Quantity: " + itemVal.getQuantity() +
+                " Subtotal: " + itemVal.getSubtotal());
+        }*/
+        //receipt.setTotalPrice(calculateTotalPrice(itemsList));
+        //System.out.println("Total Price: " + receipt.getTotalPrice());
+        return receipt;
     }
 }
