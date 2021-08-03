@@ -81,4 +81,17 @@ public class PosMachine {
                 "Total: " + receipt.getTotalPrice() + " (yuan)\n" +
                 "**********************");
     }
+
+    private String generateItemsDetail(Receipt receipt) {
+        String itemsDetail = "";
+        for (Item itemValue : receipt.getItems())
+        {
+            itemsDetail += "Name: "+ itemValue.getName() +
+                    ", Quantity: " + itemValue.getQuantity() +
+                    ", Unit price: " + itemValue.getUnitPrice() + " (yuan)" +
+                    ", Subtotal: " + itemValue.getSubtotal() + " (yuan)\n";
+        }
+        //System.out.println(itemsDetail);
+        return itemsDetail;
+    }
 }
