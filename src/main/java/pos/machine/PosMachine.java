@@ -4,15 +4,7 @@ import java.util.*;
 public class PosMachine {
     public String printReceipt(List<String> barcodes) {
         List<Item> items = convertToItems(barcodes);
-        //String tempVal = "";
-        /*for (Item itemVal:items) {
-            System.out.println("Name: "+ itemVal.getName() +
-                    " Unit Price: " + itemVal.getUnitPrice() +
-                    " Quantity: " + itemVal.getQuantity());
-        }*/
-
         Receipt receipt = calculateReceipt(items);
-
         return generateReceipt(receipt);
     }
 
@@ -45,15 +37,7 @@ public class PosMachine {
     private Receipt calculateReceipt(List<Item> itemsList) {
         Receipt receipt = new Receipt();
         receipt.setItems(calculateItemsSubtotal(itemsList));
-        /*for (Item itemVal : receipt.getItems())
-        {
-            System.out.println("Name: "+ itemVal.getName() +
-                " Unit Price: " + itemVal.getUnitPrice() +
-                " Quantity: " + itemVal.getQuantity() +
-                " Subtotal: " + itemVal.getSubtotal());
-        }*/
         receipt.setTotalPrice(calculateTotalPrice(itemsList));
-        //System.out.println("Total Price: " + receipt.getTotalPrice());
         return receipt;
     }
 
@@ -91,7 +75,6 @@ public class PosMachine {
                     ", Unit price: " + itemValue.getUnitPrice() + " (yuan)" +
                     ", Subtotal: " + itemValue.getSubtotal() + " (yuan)\n";
         }
-        //System.out.println(itemsDetail);
         return itemsDetail;
     }
 }
